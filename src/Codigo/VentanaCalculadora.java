@@ -12,7 +12,7 @@ package Codigo;
 public class VentanaCalculadora extends javax.swing.JFrame {
 
     double operando1 = 0;  //primer operando
-    String operacion = "";
+    String operacion = "";  //guarda que operacion se ha pulsado
     /**
      * Creates new form VentanaCalculadora
      */
@@ -25,6 +25,13 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         }else{
         pantalla.setText(pantalla.getText() + numero);
         }
+    }
+         private void operacionPulsado(String _operacion){
+        operacion = _operacion;
+        //convierto lo que hay escrito en la pantalla que es un numero pero que ahora mismo es un string a su equivalente double
+        operando1 = Double.valueOf(pantalla.getText());
+        //borro la pantalla y pongo un 0
+        pantalla.setText("0");
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -298,7 +305,7 @@ public class VentanaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton09MousePressed
 
     private void jButtonMasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonMasMousePressed
-        
+        operacionPulsado("+");
     }//GEN-LAST:event_jButtonMasMousePressed
 
     private void jButton08MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton08MousePressed
@@ -314,7 +321,7 @@ public class VentanaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton06MousePressed
 
     private void jButtonMenosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonMenosMousePressed
-        // TODO add your handling code here:
+        operacionPulsado("-");
     }//GEN-LAST:event_jButtonMenosMousePressed
 
     private void jButton05MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton05MousePressed
@@ -330,7 +337,7 @@ public class VentanaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton03MousePressed
 
     private void jButtonPorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPorMousePressed
-        // TODO add your handling code here:
+         operacionPulsado("*");
     }//GEN-LAST:event_jButtonPorMousePressed
 
     private void jButton02MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton02MousePressed
@@ -338,11 +345,18 @@ public class VentanaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton02MousePressed
 
     private void jButtonIgualMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonIgualMousePressed
-        // TODO add your handling code here:
+       //leo el segundo operando que esta en la pantalla y lo convierto a double
+        double operando2 = Double.valueOf(pantalla.getText());
+        
+        if (operacion.equals("+")){
+        operando1 = operando1 + operando2;
+        }
+        pantalla.setText(String.valueOf(operando1));
+        
     }//GEN-LAST:event_jButtonIgualMousePressed
 
     private void jButtonDividirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDividirMousePressed
-        // TODO add your handling code here:
+        operacionPulsado("/");
     }//GEN-LAST:event_jButtonDividirMousePressed
 
     private void jButton00MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton00MousePressed
